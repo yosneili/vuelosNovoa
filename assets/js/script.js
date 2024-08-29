@@ -108,19 +108,19 @@ $(document).ready(function() {
                 <form id="formulariolindo">
                     <div class="row mb-3">
                         <div class="col">
-                          <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" required>
+                          <input type="text" id="nombreForm" class="form-control" placeholder="Nombre" aria-label="Nombre" required>
                         </div>
                         <div class="col">
-                          <input type="text" class="form-control" placeholder="Apellidos" aria-label="Apellidos" required>
+                          <input type="text" id="apellidoForm" class="form-control" placeholder="Apellidos" aria-label="Apellidos" required>
                         </div>
                       </div>
                     <div class="mb-3">
-                        <input type="email" class="form-control" placeholder="Correo electrónico" aria-describedby="emailHelp" required>
+                        <input type="email" id="emailForm" class="form-control" placeholder="Correo electrónico" aria-describedby="emailHelp" required>
                         <div id="emailHelp" class="form-text">El correo es para contactarnos con usted.</div>
                     </div>
                     <div class="input-group mb-1">
                         <span class="input-group-text">+56</span>
-                        <input type="tel" class="form-control input-group" placeholder="Número de telefono" pattern="[9] [0-9]{4} [0-9]{4}" aria-label="numeroDeTelefono" required>
+                        <input type="tel" id="phoneForm" class="form-control input-group" placeholder="Número de telefono" pattern="[9] [0-9]{4} [0-9]{4}" aria-label="numeroDeTelefono" required>
                     </div>
                     <p class="form-text">Formato esperado: 9 1111 1111</p>
                     <div class="mb-3">
@@ -128,7 +128,7 @@ $(document).ready(function() {
                     </div>
 
 
-                    <button type="submit" id ="btnEnviar" class="btn btn-primary">Enviar</button>
+                    <button type="submit" id ="btnEnviar" class="btn btn-primary" disabled>Enviar</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -145,6 +145,63 @@ $('#contacto').click(function () {
     
 });
 
+document.getElementById("numero").onchange = function() {
+    validarNumero(this.value);
+};
+
+// Se debe validar cada uno de los inputs
+// 
+event.preventDefault(); 
+document.addEventListener("DOMContentLoaded", function() {
+    const formulario = document.getElementById("miFormulario");
+    const inputs = formulario.querySelectorAll("input[type='text']");
+    const inputsMail = formulario.querySelectorAll("input[type='email']");
+    const inputsTel = formulario.querySelectorAll("input[type='tel']");
+
+    const submitBtn = document.getElementById("btnEnviar");
+
+    // Función para verificar si todos los campos están llenos
+    function verificarCampos() {
+        let allFilled = true;
+
+        inputs.forEach(function(input) {
+            if (input.value.trim() === "") {
+                allFilled = false;
+            }
+        });
+
+        inputsMail.forEach(function(inputMail) {
+            if (inputMail.value.trim() === "") {
+                allFilled = false;
+            }
+        });
+
+        inputsTel.forEach(function(inputTel) {
+            if (inputTel.value.trim() === "") {
+                allFilled = false;
+            }
+        });
+
+        // Habilitar o deshabilitar el botón de envío según el estado de los campos
+        submitBtn.disabled = !allFilled;
+    }
+
+    // Agregar el evento input a cada campo
+    inputs.forEach(function(input) {
+        input.addEventListener("input", verificarCampos);
+    });
+
+    inputsMail.forEach(function(inputMail) {
+        inputMail.addEventListener("input", verificarCampos);
+    });
+
+    inputsTel.forEach(function(inputTel) {
+        inputTel.addEventListener("input", verificarCampos);
+    });
+
+    // Ejecutar la verificación inicial por si hay valores prellenados
+    verificarCampos();
+});
 
 /* Swal.fire({
     position: "top-end",
