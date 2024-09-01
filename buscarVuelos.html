@@ -34,11 +34,10 @@
           <li class="nav-item">
             <a class="nav-link" id="contacto" href="#">Contacto</a>
           </li>
-        </ul>
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a id="estado-vuelo-btn" class="nav-link" href="#">Estado de vuelo</a>
-          </li>
+            <a id= "estado-vuelo-btn" class="nav-link" href="#">Estado de vuelo</a>
+        </li>
+        </ul>
           <li class="nav-item">
             <button class="btn btn-outline-light">Iniciar sesión</button>
           </li>
@@ -86,41 +85,68 @@
       <div class="col-md-6">
         <label for="tipoViaje" class="form-label">Tipo de viaje:</label>
         <select id="tipoViaje" class="form-select">
-          <option selected>Ida y Vuelta</option>
-          <option value="1">Solo Ida</option>
+          <option selected>Selecciona Tipo de Viaje</option>
+          <option value="soloIda">Solo Ida</option>
+          <option value="idaVuelta">Ida y Vuelta</option>
         </select>
       </div>
       <div class="col-md-6">
         <label for="origen" class="form-label">Ciudad de Origen:</label>
-        <input type="text" id="origen" class="form-control" placeholder="Seúl">
+        <select id="ciudadIda" class="form-select">
+          <option selected>Selecciona Ciudad de Origen</option>
+          <option value="santiago">Santiago</option>
+          <option value="buenos-aires">Buenos Aires</option>
+          <option value="mexico-city">Ciudad de México</option>
+          <option value="madrid">Madrid</option>
+          <option value="lima">Lima</option>
+          <option value="bogota">Bogotá</option>
+          <option value="caracas">Caracas</option>
+          <option value="quito">Quito</option>
+          <option value="montevideo">Montevideo</option>
+          <option value="san-jose">San José</option>
+          <option value="asuncion">Asunción</option>
+          <option value="panama-city">Ciudad de Panamá</option>
+          <option value="la-habana">La Habana</option>
+          <option value="rio-de-janeiro">Río de Janeiro</option>
+        </select>
       </div>
     </div>
     <div class="row g-3 mb-3">
       <div class="col-md-6">
         <label for="destino" class="form-label">Ciudad de Destino:</label>
-        <input type="text" id="destino" class="form-control" placeholder="Santiago de Chile">
+        <select id="ciudadVuelta" class="form-select">
+          <option selected>Selecciona Ciudad de Origen</option>
+          <option value="santiago">Santiago</option>
+          <option value="buenos-aires">Buenos Aires</option>
+          <option value="mexico-city">Ciudad de México</option>
+          <option value="madrid">Madrid</option>
+          <option value="lima">Lima</option>
+          <option value="bogota">Bogotá</option>
+          <option value="caracas">Caracas</option>
+          <option value="quito">Quito</option>
+          <option value="montevideo">Montevideo</option>
+          <option value="san-jose">San José</option>
+          <option value="asuncion">Asunción</option>
+          <option value="panama-city">Ciudad de Panamá</option>
+          <option value="la-habana">La Habana</option>
+          <option value="rio-de-janeiro">Río de Janeiro</option>
+        </select>
       </div>
-      <div class="col-md-3">
-        <label for="fechaIda" class="form-label">Fecha de Ida:</label>
-        <input type="date" id="fechaIda" class="form-control">
+      <div class="col-md-3" id="mostrarIda">
       </div>
-      <div class="col-md-3">
-        <label for="fechaVuelta" class="form-label">Fecha de Retorno:</label>
-        <input type="date" id="fechaVuelta" class="form-control">
+      <div class="col-md-3" id="mostrarVuelta">
       </div>
     </div>
     <div class="row g-3 mb-3">
       <div class="col-md-6">
         <label for="pasajeros" class="form-label">Cantidad de Pasajeros:</label>
-        <input type="number" id="pasajeros" class="form-control" placeholder="2">
+        <input type="number" id="pasajeros" class="form-control" placeholder="2" min="0" max="7" step="1">
       </div>
-      <div class="col-md-3">
-        <label for="ninos" class="form-label">Cantidad de Niños:</label>
-        <input type="number" id="ninos" class="form-control" placeholder="1">
+      <div class="col-md-3" id="cantidadNinos">
+
       </div>
-      <div class="col-md-3">
-        <label for="edadNino" class="form-label">Edad del niño 1:</label>
-        <input type="number" id="edadNino" class="form-control" placeholder="5">
+      <div class="row mb-3" id="edadNino">
+
       </div>
     </div>
     <div class="row g-3 mb-4">
@@ -137,14 +163,16 @@
       <button type="submit" class="btn btn-custom">Buscar Vuelos</button>
   </div>  
   </form>
-
+  <div id="formularioConModal"></div>
+  
   <!-- Bootstrap JS y jQuery y sweetAlert2-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/script.js"></script>
-  <script src="app2.js"></script>
+  <script src="assets/js/formContact.js"></script>
+  <script src="assets/js/buscarVuelos.js"></script>
+  
 </body>
 
 </html>
